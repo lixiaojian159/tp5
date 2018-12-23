@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css">
+	<script src="/static/jquery/jquery.js"></script>
+	<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+	<title>Document</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<h2 style="text-align: center">角色列表</h2>
+				<table class="table table-bordered table-hover">
+					<tr style="text-align: center" class="bg-primary">
+						<td>序号</td>
+						<td>姓名</td>
+						<td>密码</td>
+						<td>盐</td>
+						<td>邮箱</td>
+						<td>邀请码</td>
+						<td>角色</td>
+					</tr>
+					<tbody>
+					{volist name="lists" id="list"}
+					<tr style="text-align: center">
+						<td>{$list.id}</td>
+						<td>{$list.name}</td>
+						<td>{$list.password}</td>
+						<td>{$list.salt}</td>
+						<td>{$list.email}</td>
+						<td>{$list.keycode}</td>
+						<td>{$list.route}</td>
+					</tr>
+				    {/volist}
+				    </tbody>
+				</table>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+		<div style="text-align: center">{$lists|raw}</div>
+    </div>
+    <div>{$Request.get.name}</div>
+    <div>{$Think.const.PHP_OS}</div>
+    <div>{$Think.const.PHP_VERSION}</div>
+    <div>{$Think.config.database.hostname}</div>
+    <div>{$Request.root.true}</div>
+    <div>{$Request.path}</div>
+    <div>{$Request.controller}</div>
+    <div>{$Request.action}</div>
+    <div>{$Request.host}</div>
+    <div>{$Request.ip}</div>
+</body>
+</html>
