@@ -38,4 +38,8 @@ class Test extends Base{
 		return 'success';
 
 	}
+
+	public function test3(){
+		return $this->view->fetch();
+	}
 }

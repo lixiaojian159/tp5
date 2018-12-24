@@ -10,7 +10,6 @@ class User extends Validate{
 		'name'  => 'require|length:5,20|chsAlphaNum',
 		'email' => 'require|email|unique:user',
 		'mobile'=> 'require|number|mobile|unique:user',
-		'password'=> 'require|alphaNum|confirm:password_confirm',
-		'password_confirm' => 'require|alphaNum'
+		'password'=> 'require|alphaNum|confirm:password_confirm'
 	];
 }

@@ -1,17 +1,7 @@
-{include file="public:header" /}
-		<div class="row">
-			<div class="col-md-12">
-				{include file="public:nav" /}
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-8">
-				<div class="page-header">
-				    <h1>全部内容</h1>
-				</div>
-			</div>
-			<div class="col-md-4">
-				{include file="public:right" /}
-			</div>
-		</div>
-{include file="public:footer" /}
+{extend name="public:base" /}
+
+{block name="main"}
+<div class="page-header">
+  <h1>全部内容</h1>
+</div>
+{/block}

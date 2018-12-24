@@ -1,0 +1,40 @@
+{extend name="public:base" /}
+
+{block name="main"}
+<div class="page-header">
+  <h1>发布文章</h1>
+</div>
+<form method="post" action="{:url('index/Index/save')}" enctype="multipart/form-data">
+
+  <input type="hidden" name="user_id" value="{$Think.session.user_id}">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">文章标题</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Title" name="title">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword2">分类</label>
+    <select name="cate_id" class="form-control">
+      <option>请选择...</option>
+      {volist name="cates" id="cate"}
+      <option value="{$cate.id}">{$cate.name}</option>
+      {/volist}
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail3">文章内容</label>
+    <textarea class="form-control" rows="9" name="content"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail4">上传图片</label>
+    <div class="controls">
+        <input id="FileUpload1" name="title_img" type="file">
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+{/block}

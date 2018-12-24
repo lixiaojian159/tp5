@@ -7,6 +7,6 @@ use think\Facade;
 class User extends Facade{
 
 	protected static function getFacadeClass(){
-		return 'app\validate\User';
+		return 'app\common\validate\User';
 	}
 }

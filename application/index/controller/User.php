@@ -5,7 +5,8 @@ namespace app\index\controller;
 //use think\Controller;
 use app\common\controller\Base;
 
-use app\common\facade\User as UserFacade;
+//use app\common\facade\User as UserFacade;
+use app\common\validate\User as UserValidate;
 
 use think\facade\Request;
 
@@ -33,8 +34,9 @@ class User extends Base{
 		$data = Request::post();
 
         //开始验证
-		if(!UserFacade::check($data)){
-			return ['status' => 0 , 'message' => UserFacade::getError() ];
+        $validate = new UserValidate();
+		if(!$validate->check($data)){
+			return ['status' => 0 , 'message' => $validate->getError() ];
 		}
 
         //整理写入数据库的数据
@@ -53,7 +55,7 @@ class User extends Base{
 
 	//会员登录
 	public function login(){
-		$this->isLogin();
+		$this->Logined();
 		return $this->view->fetch('user/login',['title'=>'会员登录']);
 	}
 
