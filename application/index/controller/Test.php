@@ -46,4 +46,8 @@ class Test extends Base{
 	public function test4(){
 		$this->showNav();
 	}
+
+	public function test5(){
+		return getUserName(21);
+	}
 }

@@ -10,3 +10,27 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+
+use think\Db;
+
+/**
+ * [getUserName 根据user_id, 获取用户名]
+ * @param  [int] $id   user_id
+ * @return [string]    name
+ */
+function getUserName($id){
+	//$UserModel = new app\common\model\User();
+	//$user = $UserModel->find($id);
+	$user = Db::table('user')->find($id);
+	return $user['name'];
+}
+
+
+/**
+ * [getContentAtt 过滤字符串]
+ * @param  [string] $string  要被过滤的字符串
+ * @return [string]          处理之后的字符串
+ */
+function getContentAtt($string){
+	return mb_substr(strip_tags($string),0,50,'utf8')." ...";
+}

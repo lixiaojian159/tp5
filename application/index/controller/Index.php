@@ -19,15 +19,12 @@ class Index extends Base
             //获取当前栏目
             $cateName = ArticleCategory::find($cateId)['name'];
             //获取文章
-            // $articles = Article::all(function($query)use($cateId){
-            //     $query->where('cate_id',$cateId);
-            // });
-            $articles = Article::where('cate_id',$cateId)->where('status',1)->paginate(1);
+            $articles = Article::where('cate_id',$cateId)->where('status',1)->order('create_time','desc')->paginate(1);
         }else{
             //获取当前栏目
             $cateName = '全部文章';
             //获取文章
-            $articles = Article::where('status',1)->paginate(1);
+            $articles = Article::where('status',1)->order('create_time','desc')->paginate(3);
         }
         $this->view->assign('cateName',$cateName);
         $this->view->assign('articles',$articles);

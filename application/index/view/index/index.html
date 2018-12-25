@@ -7,14 +7,14 @@
 {volist name="articles" id="article"}
 <div class="col-md-12" style="margin-top: 10px">
 	<div class="col-md-3">
-		<img src="/{$article['title_img']}" alt="..." class="img-thumbnail" width="150">
+		<img src="/{$article['title_img']}" alt="..." class="img-thumbnail">
 	</div>
 	<div class="col-md-9">
-		<h2>{$article.title}</h2>
-		<p>作者:<small>{$article.user_id}</small> &nbsp;&nbsp;&nbsp;发布时间:<small>{$article.create_time}</small></p>
-		<p>{$article.content}</p>
+		<h2><a href="">{$article.title}</a></h2>
+		<p>作者:<small>{$article.user_id|getUserName}</small> &nbsp;&nbsp;&nbsp;发布时间:<small>{$article.create_time}</small></p>
+		<p><a href="">{$article.content|getContentAtt}</a></p>
 	</div>
 </div>
 {/volist}
-<div class="col-md-12">{$articles|raw}</div>
+<div class="col-md-12 text-center">{$articles|raw}</div>
 {/block}
