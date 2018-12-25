@@ -6,11 +6,13 @@ use think\Controller;
 
 use think\facade\Session;
 
+use app\common\model\ArticleCategory;
+
 class Base extends Controller{
 
 	// 初始化
     protected function initialize(){
-    	
+    	$this->showNav();
     }
 
     //防止用户重复登录
@@ -25,5 +27,13 @@ class Base extends Controller{
         if(!Session::has('user_id') || !Session::has('user_name')){
             $this->error('请登陆后,再进行此操作','User/login');
         }
+    }
+
+    //获取分页导航
+    public function showNav(){
+        $cateList = ArticleCategory::all(function($query){
+            $query->where('status',1)->order('sort','asc');
+        });
+        $this->view->assign('cateList',$cateList);
     }
 }

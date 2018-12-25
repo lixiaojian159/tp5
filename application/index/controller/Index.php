@@ -6,36 +6,32 @@ use think\Controller;
 use think\facade\Request;//静态代理
 use think\Db;
 use app\common\model\ArticleCategory;
+//use app\common\validate\Article;
+//use app\common\model\Article;
+use app\common\facade\Article; //静态代理
 
 class Index extends Base
 {
     public function index()
     {
+        $cateId  = Request::param('cate_id');
+        if(isset($cateId)){
+            //获取当前栏目
+            $cateName = ArticleCategory::find($cateId)['name'];
+            //获取文章
+            // $articles = Article::all(function($query)use($cateId){
+            //     $query->where('cate_id',$cateId);
+            // });
+            $articles = Article::where('cate_id',$cateId)->where('status',1)->paginate(1);
+        }else{
+            //获取当前栏目
+            $cateName = '全部文章';
+            //获取文章
+            $articles = Article::where('status',1)->paginate(1);
+        }
+        $this->view->assign('cateName',$cateName);
+        $this->view->assign('articles',$articles);
         return $this->fetch();
-    }
-
-    public function hello($name = 'ThinkPHP5')
-    {
-        return 'hello,' . $name;
-    }
-
-    public function test(){
-    	$test = new \app\common\Demo2();
-    	return $test->hello('nihao');
-    }
-
-    public function test2(Request $request){
-    	dump($request->get());
-    	//return json_encode($request->get());
-    }
-
-    public function test3(){
-        $db = Db::table('users')->where('id',1)->find();
-        dump($db);
-    }
-
-    public function test4(){
-        dump($this->request->get());
     }
 
     //发布文章界面
@@ -60,8 +56,33 @@ class Index extends Base
         if(!Request::isPost()){
             return $this->error('请求方式错误','index/insert');
         }else{
+            //接收数据
             $data = Request::post();
-            halt($data);
+            //验证数据
+            $res  = $this->validate($data,'app\common\validate\Article');
+            if($res !== true){
+                //验证失败
+                echo '<script>
+                          alert("'.$res.'");
+                          window.location.href = "'.url('index/Index/insert').'";
+                      </script>';
+            }else{
+                //验证成功
+                //获取上传图片
+                $file = Request::file('title_img');
+                $info = $file->validate(['size'=>1000000,'ext'=>'png,jpg,gif'])->move('uploads/');
+                if($info){
+                    $data['title_img'] = 'uploads/'.$info->getSaveName();
+                    //保存数据到数据库
+                    if(Article::create($data)){
+                        $this->success('发布文章成功','Index/index');
+                    }else{
+                        $this->error('发布文章失败');
+                    }
+                }else{
+                    $this->error($file->getError());
+                }
+            }
         }
     }
 }

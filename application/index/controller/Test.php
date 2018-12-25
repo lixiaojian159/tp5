@@ -42,4 +42,8 @@ class Test extends Base{
 	public function test3(){
 		return $this->view->fetch();
 	}
+
+	public function test4(){
+		$this->showNav();
+	}
 }

@@ -46,6 +46,9 @@ class User extends Base{
 		$res  = UserModel::create($data);
 
 		if($res){
+			//记录session
+			Session::set('user_id',$res['id']);
+			Session::set('user_name',$res['name']);
 			return ['status' => 1 , 'message' => '注册成功'];
 		}else{
 			return ['status' => 0 , 'message' => '注册失败'];
