@@ -50,4 +50,8 @@ class Test extends Base{
 	public function test5(){
 		return getUserName(21);
 	}
+
+	public function test6(){
+		getCateName(4);
+	}
 }

@@ -34,3 +34,12 @@ function getUserName($id){
 function getContentAtt($string){
 	return mb_substr(strip_tags($string),0,50,'utf8')." ...";
 }
+
+/**
+ * [getCateName 根据栏目cate_id, 获取栏目名称]
+ * @param  [int]     $cateId     cate_id
+ * @return [string]  $cateName   栏目名称
+ */
+function getCateName($cateId){
+	return Db::table('article_category')->where('id',$cateId)->value('name');
+}

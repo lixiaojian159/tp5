@@ -1,0 +1,57 @@
+{extend name="public:base" /}
+
+{block name="main"}
+<div class="page-header">
+  <h1>{$article.cate_id|getCateName}</h1>
+</div>
+
+<div class="col-md-12" style="margin-top: 10px">
+	<h2 class="text-center">{$article.title}</h2>
+	<p class="text-center">
+		作者:<small>{$article.user_id|getUserName}</small> &nbsp;&nbsp;&nbsp;
+		发布时间:<small>{$article.create_time}</small>  &nbsp;&nbsp;&nbsp;
+		阅读量:<small>{$article.pv}</small> &nbsp;&nbsp;&nbsp;
+		{if $fav == 1}
+		<button class="btn btn-default" id="fav" data-id="{$article.id}" session-id="{$Think.session.user_id}">收藏</button>
+		{else /}
+		<button class="btn btn-success" id="fav" data-id="{$article.id}" session-id="{$Think.session.user_id}">已收藏</button>
+		{/if}
+	</p>
+	<img src="/{$article.title_img}" class="img-thumbnail center-block" width="300">
+	<p>{$article.content}</p>
+</div>
+{$fav}
+<script>
+	$("#fav").on('click',function(){
+		var article_id = $(this).attr('data-id');
+		var user_id = $(this).attr('session-id');
+		var data = {'article_id':article_id,'user_id':user_id};
+		var url  = '{:url("index/Index/fav")}';
+		$.ajax({
+			type : 'get',
+			url  :  url,
+			data :  data,
+			dataType : 'JSON',
+			success:function(result){
+				switch(result.status){
+					case -1:
+					    alert(result.message);
+					    break;
+					case -2:
+					    alert(result.message);
+					    window.location.href = '{:url("index/User/login")}';
+					    break;
+					case 0:
+					    $("#fav").attr('class','btn btn-default');
+					    $("#fav").text(result.message);
+					    break;
+					case 1:
+					    $("#fav").attr('class','btn btn-success');
+					    $("#fav").text(result.message);
+					    break;
+				}
+			}
+		})
+	})
+</script>
+{/block}

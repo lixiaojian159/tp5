@@ -10,9 +10,9 @@
 		<img src="/{$article['title_img']}" alt="..." class="img-thumbnail">
 	</div>
 	<div class="col-md-9">
-		<h2><a href="">{$article.title}</a></h2>
-		<p>作者:<small>{$article.user_id|getUserName}</small> &nbsp;&nbsp;&nbsp;发布时间:<small>{$article.create_time}</small></p>
-		<p><a href="">{$article.content|getContentAtt}</a></p>
+		<h2><a href="{:url('index/Index/detail',['id'=>$article['id']])}">{$article.title}</a></h2>
+		<p>作者:<small>{$article.user_id|getUserName}</small> &nbsp;&nbsp;&nbsp;发布时间:<small>{$article.create_time}</small>  &nbsp;&nbsp;&nbsp;阅读量:<small>{$article.pv}</small></p>
+		<p>{$article.content|getContentAtt}</p>
 	</div>
 </div>
 {/volist}
