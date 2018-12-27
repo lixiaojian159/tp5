@@ -18,6 +18,7 @@ class Index extends Base
         $keywords = Request::param('keywords');
         if(isset($keywords)){
             $map[] = ['title','like','%'.$keywords.'%'];
+            $this->view->assign('keywords',$keywords);
         }
         $map[] = ['status','=',1];
         $cateId  = Request::param('cate_id');

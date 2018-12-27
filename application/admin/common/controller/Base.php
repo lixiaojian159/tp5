@@ -16,7 +16,7 @@ class Base extends Controller{
 
     //判断用户是否登陆,只有登陆用户才可以继续访问
     protected function isLogin(){
-    	if(!Session::has('admin_id') || Session::has('admin_name')){
+    	if(!Session::has('admin_id') || !Session::has('admin_name')){
     		$this->error('请登录后,再操作admin模块','User/login');
     	}
     }

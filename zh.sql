@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1
--- 生成日期： 2018-12-26 10:10:27
+-- 生成日期： 2018-12-27 10:21:59
 -- 服务器版本： 10.1.37-MariaDB
 -- PHP 版本： 7.2.13
 
@@ -51,9 +51,13 @@ INSERT INTO `article` (`id`, `title`, `title_img`, `cate_id`, `user_id`, `is_hot
 (1, '微信支付技巧', 'uploads/20181225\\6586d1e2a79f7787b5688d64f3834da9.jpg', 4, 21, 0, 0, 1, '微信支付技巧微信支付技巧微信支付技巧微信支付技巧微信支付技巧微信支付技巧微信支付技巧', 0, 1545705707, 1545705707),
 (2, '第二篇文章的发布', 'uploads/20181225\\8ccfac4881b090a25c90e662fd6c67e4.jpg', 5, 21, 0, 0, 1, '文章内容文章内容文章内容文章内容文章内容文章内容', 5, 1545705954, 1545794440),
 (3, '文章标题啊啊啊测试', 'uploads/20181225\\83a61c125318aed398112204d5ed8372.jpg', 6, 21, 0, 0, 1, '文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容', 0, 1545705998, 1545705998),
-(4, 'php函数练习', 'uploads/20181225\\acb811de2420db21fb4f0d6f2c2a6c0a.jpg', 4, 21, 0, 0, 1, 'php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习', 1, 1545728201, 1545794445),
-(5, 'javascript基础知识', 'uploads/20181225\\c9ba0e43bfb915e9d4445a87e23259e5.jpg', 7, 21, 0, 0, 1, 'javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识', 2, 1545730008, 1545808514),
-(6, 'MySQL指南手册', 'uploads/20181226\\f9b4c9541e0817a4e4652c5bab188911.jpg', 6, 21, 0, 0, 1, 'MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册', 70, 1545787942, 1545808518);
+(4, 'php函数练习', 'uploads/20181225\\acb811de2420db21fb4f0d6f2c2a6c0a.jpg', 4, 21, 0, 0, 1, 'php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习', 3, 1545728201, 1545876251),
+(5, 'javascript基础知识', 'uploads/20181225\\c9ba0e43bfb915e9d4445a87e23259e5.jpg', 7, 21, 0, 0, 1, 'javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识', 5, 1545730008, 1545898895),
+(6, 'MySQL指南手册', 'uploads/20181226\\f9b4c9541e0817a4e4652c5bab188911.jpg', 6, 21, 0, 0, 1, 'MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册', 76, 1545787942, 1545898893),
+(7, 'MySQL基础1', 'uploads/20181227\\d5a317923b7723afc8251025322b57c3.jpg', 6, 21, 0, 0, 1, 'MySQL基础1MySQL基础1MySQL基础1MySQL基础1MySQL基础1MySQL基础1MySQL基础1MySQL基础1<br>', 0, 1545893285, 1545893285),
+(8, 'MySQL基础2', 'uploads/20181227\\ad3d141efeb41f9d9f457a030c7e58c4.jpg', 6, 21, 0, 0, 1, 'MySQL基础2MySQL基础2MySQL基础2MySQL基础2MySQL基础2MySQL基础2MySQL基础2MySQL基础2<br>', 0, 1545893310, 1545893310),
+(9, 'MySQL基础3', 'uploads/20181227\\84340e390036a2e181061e0a54fc6fc9.jpg', 6, 21, 0, 0, 1, 'MySQL基础3MySQL基础3MySQL基础3MySQL基础3MySQL基础3MySQL基础3MySQL基础3MySQL基础3MySQL基础3<br>', 0, 1545893329, 1545893329),
+(10, 'MySQL基础4', 'uploads/20181227\\4ae1a0b2afac824a13ed57c20bd84363.jpg', 6, 21, 0, 0, 1, 'MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4<br>', 2, 1545893364, 1545898867);
 
 -- --------------------------------------------------------
 
@@ -125,7 +129,8 @@ CREATE TABLE `user_fav` (
 --
 
 INSERT INTO `user_fav` (`id`, `article_id`, `user_id`) VALUES
-(7, 6, 21);
+(8, 6, 21),
+(9, 5, 21);
 
 -- --------------------------------------------------------
 
@@ -181,7 +186,7 @@ ALTER TABLE `user_like`
 -- 使用表AUTO_INCREMENT `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键', AUTO_INCREMENT=7;
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键', AUTO_INCREMENT=11;
 
 --
 -- 使用表AUTO_INCREMENT `article_category`
@@ -199,7 +204,7 @@ ALTER TABLE `user`
 -- 使用表AUTO_INCREMENT `user_fav`
 --
 ALTER TABLE `user_fav`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键', AUTO_INCREMENT=8;
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键', AUTO_INCREMENT=10;
 
 --
 -- 使用表AUTO_INCREMENT `user_like`

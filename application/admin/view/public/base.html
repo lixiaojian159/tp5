@@ -1,0 +1,36 @@
+{include file="public:header" /}
+<style type="text/css">
+.panel-group{max-height:770px;overflow: auto;}
+.leftMenu{margin:10px;margin-top:5px;}
+.leftMenu .panel-heading{font-size:14px;padding-left:20px;height:36px;line-height:36px;color:white;position:relative;cursor:pointer;}/*转成手形图标*/
+.leftMenu .panel-heading span{position:absolute;right:10px;top:12px;}
+.leftMenu .menu-item-left{padding: 2px; background: transparent; border:1px solid transparent;border-radius: 6px;}
+.leftMenu .menu-item-left:hover{background:#C4E3F3;border:1px solid #1E90FF;}
+</style>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				{include file="public:nav" /}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">			
+                {include file="public:left" /}
+			</div>
+			<div class="col-md-10">
+				{block name="main"}主体{/block}
+			</div>
+		</div>
+	</div>
+</body>
+ <script>
+$(function(){
+    $(".panel-heading").click(function(e){
+        /*切换折叠指示图标*/
+        $(this).find("span").toggleClass("glyphicon-chevron-down");
+        $(this).find("span").toggleClass("glyphicon-chevron-up");
+    });
+});
+</script>
+</html>

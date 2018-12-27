@@ -10,4 +10,9 @@ class Index extends Base{
 	public function index(){
 		return $this->view->fetch();
 	}
+
+	//用户列表
+	public function userlist(){
+		return $this->view->fetch();
+	}
 }
