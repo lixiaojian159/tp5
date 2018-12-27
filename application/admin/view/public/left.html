@@ -1,4 +1,5 @@
 <div class="panel-group table-responsive" role="tablist">
+    {if $Think.session.admin_level == 1}
     <div class="panel panel-primary leftMenu">
         <!-- 利用data-target指定要折叠的分组列表 -->
         <div class="panel-heading" id="collapseListGroupHeading1" data-toggle="collapse" data-target="#collapseListGroup1" role="tab" >
@@ -19,7 +20,9 @@
               </li>
             </ul>
         </div>
-    </div><!--panel end-->
+    </div>
+    {/if}
+    <!--panel end-->
     <div class="panel panel-primary leftMenu">
         <div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse" data-target="#collapseListGroup2" role="tab" >
             <h4 class="panel-title">
