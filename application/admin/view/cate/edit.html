@@ -1,0 +1,37 @@
+{extend name="public:base" /}
+
+{block name="main"}
+<h2 class="text-center">栏目编辑</h2>
+<form class="form-horizontal" action="{:url('admin/Cate/doEdit')}" method="post">
+  <input type="hidden" name="id" value="{$cate.id}">
+  <input type="hidden" name="user_id" value="{$cate.user_id}">
+  <div class="form-group">
+    <label for="inputEmail1" class="col-sm-2 control-label">栏目名称</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputEmail1" name="name" value="{$cate.name}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword2" class="col-sm-2 control-label">排序</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputPassword2" name="sort" value="{$cate.sort}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword2" class="col-sm-2 control-label">状态</label>
+    <div class="col-sm-10">
+	     <label class="radio-inline">
+			    <input type="radio" name="status" id="inlineRadio1" value="1" {eq name="$cate.status" value="1"}checked="checked"{/eq}> 开启
+			</label>
+			<label class="radio-inline">
+			    <input type="radio" name="status" id="inlineRadio2" value="0" {eq name="$cate.status" value="0"}checked="checked"{/eq}> 关闭
+		</label>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-info">保存</button>
+    </div>
+  </div>
+</form>
+{/block}

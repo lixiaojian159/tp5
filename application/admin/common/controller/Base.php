@@ -20,4 +20,12 @@ class Base extends Controller{
     		$this->error('请登录后,再操作admin模块','User/login');
     	}
     }
+
+    //判断是否是超级管理员
+    public function isAdmin(){
+        $admin_level = Session::get('admin_level');
+        if($admin_level == 0){
+            $this->error('您没有权限操作');
+        }
+    }
 }

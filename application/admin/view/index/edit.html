@@ -1,0 +1,44 @@
+{extend name="public:base"}
+
+{block name="main"}
+<h2 class="text-center">会员编辑</h2>
+<form class="form-horizontal" action="{:url('admin/Index/doEdit')}" method="post">
+	<input type="hidden" name="id" value="{$user.id}">
+  <div class="form-group">
+    <label for="inputEmail1" class="col-sm-2 control-label">用户名</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputEmail1" name="name" value="{$user.name}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword2" class="col-sm-2 control-label">邮箱</label>
+    <div class="col-sm-10">
+      <input type="text-center" class="form-control" id="inputPassword2" name="email" value="{$user.email}" disabled>
+      <input type="hidden" name="email" value="{$user.email}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">手机号</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputPassword3" name="mobile" value="{$user.mobile}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword4" class="col-sm-2 control-label">密码</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword4" name="password" value="{$user.password}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword5" class="col-sm-2 control-label">确认密码</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword5" name="password_confirm" value="{$user.password}">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">保存</button>
+    </div>
+  </div>
+</form>
+{/block}

@@ -43,3 +43,7 @@ function getContentAtt($string){
 function getCateName($cateId){
 	return Db::table('article_category')->where('id',$cateId)->value('name');
 }
+
+function getStringFormat($string){
+	return htmlspecialchars_decode($string);
+}

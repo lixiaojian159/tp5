@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1
--- 生成日期： 2018-12-27 10:21:59
+-- 生成日期： 2018-12-28 10:14:52
 -- 服务器版本： 10.1.37-MariaDB
 -- PHP 版本： 7.2.13
 
@@ -54,10 +54,12 @@ INSERT INTO `article` (`id`, `title`, `title_img`, `cate_id`, `user_id`, `is_hot
 (4, 'php函数练习', 'uploads/20181225\\acb811de2420db21fb4f0d6f2c2a6c0a.jpg', 4, 21, 0, 0, 1, 'php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习php函数练习', 3, 1545728201, 1545876251),
 (5, 'javascript基础知识', 'uploads/20181225\\c9ba0e43bfb915e9d4445a87e23259e5.jpg', 7, 21, 0, 0, 1, 'javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识javascript基础知识', 5, 1545730008, 1545898895),
 (6, 'MySQL指南手册', 'uploads/20181226\\f9b4c9541e0817a4e4652c5bab188911.jpg', 6, 21, 0, 0, 1, 'MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册MySQL指南手册', 76, 1545787942, 1545898893),
-(7, 'MySQL基础1', 'uploads/20181227\\d5a317923b7723afc8251025322b57c3.jpg', 6, 21, 0, 0, 1, 'MySQL基础1MySQL基础1MySQL基础1MySQL基础1MySQL基础1MySQL基础1MySQL基础1MySQL基础1<br>', 0, 1545893285, 1545893285),
+(7, 'MySQL基础1', 'uploads/20181227\\d5a317923b7723afc8251025322b57c3.jpg', 6, 21, 0, 0, 1, 'MySQL基础1MySQL基础1MySQL基础1MySQL基础1MySQL基础1MySQL基础1MySQL基础1MySQL基础1<br>', 1, 1545893285, 1545902787),
 (8, 'MySQL基础2', 'uploads/20181227\\ad3d141efeb41f9d9f457a030c7e58c4.jpg', 6, 21, 0, 0, 1, 'MySQL基础2MySQL基础2MySQL基础2MySQL基础2MySQL基础2MySQL基础2MySQL基础2MySQL基础2<br>', 0, 1545893310, 1545893310),
 (9, 'MySQL基础3', 'uploads/20181227\\84340e390036a2e181061e0a54fc6fc9.jpg', 6, 21, 0, 0, 1, 'MySQL基础3MySQL基础3MySQL基础3MySQL基础3MySQL基础3MySQL基础3MySQL基础3MySQL基础3MySQL基础3<br>', 0, 1545893329, 1545893329),
-(10, 'MySQL基础4', 'uploads/20181227\\4ae1a0b2afac824a13ed57c20bd84363.jpg', 6, 21, 0, 0, 1, 'MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4<br>', 2, 1545893364, 1545898867);
+(10, 'MySQL基础4', 'uploads/20181227\\4ae1a0b2afac824a13ed57c20bd84363.jpg', 6, 21, 0, 0, 1, 'MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4MySQL基础4<br>', 4, 1545893364, 1545988329),
+(11, 'GO语言的学习课', 'uploads/20181228\\f0145286653674d139ad6e65c9b9be9d.jpg', 10, 21, 0, 0, 1, '<i>GO语言的学习课</i><br><div><i>1.基础语法<br>2.面向对象</i></div><div><i>3.框架学习</i></div>', 16, 1545987552, 1545987850),
+(12, 'VUE学习指南', 'uploads/20181228\\832e05f50111bb9a76c2a24d06952f24.jpg', 9, 21, 0, 0, 1, 'VUE学习指南&lt;br&gt;1.VUE学习指南1&lt;div&gt;2.VUE学习指南2&lt;/div&gt;&lt;div&gt;3.VUE学习指南3&lt;/div&gt;&lt;div&gt;4.VUE学习指南4&lt;/div&gt;', 11, 1545988375, 1545988459);
 
 -- --------------------------------------------------------
 
@@ -80,10 +82,12 @@ CREATE TABLE `article_category` (
 --
 
 INSERT INTO `article_category` (`id`, `name`, `user_id`, `sort`, `status`, `create_time`, `update_time`) VALUES
-(4, 'PHP', 21, 1, 1, 0, 0),
-(5, '前端', 21, 5, 1, 0, 0),
-(6, 'MySQL', 21, 3, 1, 0, 0),
-(7, 'JavaScript', 21, 4, 1, 0, 0);
+(4, 'PHP', 21, 1, 1, 1545705707, 0),
+(5, '前端', 21, 5, 1, 1545794440, 0),
+(6, 'MySQL', 21, 3, 1, 1545794440, 0),
+(7, 'JavaScript', 21, 5, 0, 1545876251, 1545982394),
+(9, 'VUE', 21, 6, 1, 1545982640, 1545982640),
+(10, 'GO', 21, 7, 1, 1545982726, 1545982726);
 
 -- --------------------------------------------------------
 
@@ -108,9 +112,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `mobile`, `password`, `status`, `is_admin`, `create_time`, `update_time`) VALUES
-(21, 'zhangyc', 'zhangyc@qq.com', '18633599875', '7c4a8d09ca3762af61e59520943dc26494f8941b', 0, 0, 1545616544, 1545616544),
-(22, 'gurui', 'gurui@qq.com', '15688933652', '7c4a8d09ca3762af61e59520943dc26494f8941b', 0, 0, 1545622035, 1545622035),
-(24, 'admin', 'admin@qq.com', '18633563692', '7c4a8d09ca3762af61e59520943dc26494f8941b', 0, 0, 1545717405, 1545717405);
+(21, 'zhangyac1', 'zhangyc@qq.com', '18633599875', '7c4a8d09ca3762af61e59520943dc26494f8941b', 1, 1, 1545616544, 1545967566),
+(25, 'gurui', 'gurui@qq.com', '18623566395', '7c4a8d09ca3762af61e59520943dc26494f8941b', 0, 0, 1545965302, 1545965302),
+(26, 'admin', 'admin@qq.com', '18633541269', '7c4a8d09ca3762af61e59520943dc26494f8941b', 0, 0, 1545965328, 1545965328);
 
 -- --------------------------------------------------------
 
@@ -186,19 +190,19 @@ ALTER TABLE `user_like`
 -- 使用表AUTO_INCREMENT `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键', AUTO_INCREMENT=11;
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键', AUTO_INCREMENT=13;
 
 --
 -- 使用表AUTO_INCREMENT `article_category`
 --
 ALTER TABLE `article_category`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键', AUTO_INCREMENT=8;
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键', AUTO_INCREMENT=11;
 
 --
 -- 使用表AUTO_INCREMENT `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- 使用表AUTO_INCREMENT `user_fav`

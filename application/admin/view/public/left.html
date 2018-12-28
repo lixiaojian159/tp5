@@ -51,11 +51,13 @@
         </div>
         <div id="collapseListGroup3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading3">
             <ul class="list-group">
+              {if $Think.session.admin_level == 1}
               <li class="list-group-item">
                 <button class="menu-item-left">
-                    <span class="glyphicon glyphicon-triangle-right"></span>分类管理
+                    <span class="glyphicon glyphicon-triangle-right"></span><a href="{:url('admin/Cate/index')}">分类管理</a>
                 </button>
               </li>
+              {/if}
               <li class="list-group-item">
                 <button class="menu-item-left">
                     <span class="glyphicon glyphicon-triangle-right"></span>文章管理

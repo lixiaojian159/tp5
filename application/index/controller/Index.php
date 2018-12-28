@@ -64,6 +64,7 @@ class Index extends Base
         }else{
             //接收数据
             $data = Request::post();
+            $data['content'] = htmlspecialchars($data['content']);
             //验证数据
             $res  = $this->validate($data,'app\common\validate\Article');
             if($res !== true){

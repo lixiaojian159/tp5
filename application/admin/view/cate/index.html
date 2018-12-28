@@ -1,0 +1,45 @@
+{extend name="public:base" /}
+
+{block name="main"}
+<h2 class="text-center">栏目列表</h2>
+<table class="table table-hover text-center">
+	<tr>
+		<td>ID</td>
+		<td>栏目名称</td>
+		<td>状态</td>
+		<td>排序</td>
+		<td>创建时间</td>
+		<td colspan="2">操作</td>
+	</tr>
+	{volist name="cateList" id="cate"}
+	<tr>
+		<td>{$cate.id}</td>
+		<td>{$cate.name}</td>
+		<td>
+		{eq name="$cate.status" value='1'}
+		<span style="color: green">开启</span>
+		{else /}
+		<span style="color: pink">关闭</span>
+		{/eq}
+	    </td>
+		<td>{$cate.sort}</td>
+		<td>{$cate.create_time}</td>
+		<td>
+		    <a href="{:url('admin/Cate/edit',['id'=>$cate['id']])}">编辑</a>
+	    </td>
+	    <td>
+		    <a href="javascript:;" class="del" data-id="{$cate.id}">删除</a>
+	    </td>
+	</tr>
+	{/volist}
+</table>
+<a class="btn btn-primary" href="{:url('admin/Cate/add')}" role="button">添加栏目</a>
+<script>
+	$(".del").click(function(){
+		if(confirm('您确定要删除吗?') == true){
+			var id = $(this).attr('data-id');
+			window.location.href = '{:url("admin/Cate/delete")}' + '?id=' + id;
+		}
+	})
+</script>
+{/block}
