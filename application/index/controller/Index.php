@@ -115,6 +115,7 @@ class Index extends Base
         }else{
             $fav = 1;
         }
+        $article['content'] = htmlspecialchars_decode($article['content']);
         $this->view->assign('fav',$fav);
         $this->view->assign('title','文章详情页');
         $this->view->assign('article',$article);

@@ -18,7 +18,7 @@
 		{/if}
 	</p>
 	<img src="/{$article.title_img}" class="img-thumbnail center-block" width="300">
-	<p>{$article.content|htmlspecialchars_decode}</p>
+	<p>{$article.content|raw}</p>
 </div>
 
 <script>
