@@ -9,6 +9,8 @@ use app\common\model\ArticleCategory;
 //use app\common\validate\Article;
 //use app\common\model\Article;
 use app\common\facade\Article; //静态代理
+use app\common\facade\Comment as CommentValidate;
+use app\common\model\Comment as CommentModel;
 use think\facade\Session;
 
 class Index extends Base
@@ -116,9 +118,16 @@ class Index extends Base
             $fav = 1;
         }
         $article['content'] = htmlspecialchars_decode($article['content']);
+        //获取文章评论
+        $comments = CommentModel::all(function($query)use($articleId){
+            $query->where('status',1)->where('article_id',$articleId)->order('create_time','desc');
+        });
+
+        //模版赋值
         $this->view->assign('fav',$fav);
         $this->view->assign('title','文章详情页');
         $this->view->assign('article',$article);
+        $this->view->assign('comments',$comments);
         return $this->view->fetch();
     }
 
@@ -147,6 +156,31 @@ class Index extends Base
             //取消收藏
             Db::name('user_fav')->where($map)->delete();
             return ['status' => 0 , 'message' => '收藏'];
+        }
+    }
+
+    //评论
+    public function insertComment(){
+
+        if(Request::isAjax()){
+            $data = Request::post();
+            //判断用户是否登录
+            if(!$data['user_id']){
+                return ['status' => 0 , 'message' => '请先登录...'];
+            }
+
+            //验证数据
+            $res = CommentValidate::check($data);
+            if(!$res){
+                return ['status' => 0 , 'message' => CommentValidate::getError()];
+            }
+            //数据库写入
+            $doRes = CommentModel::create($data);
+            if($doRes){
+                return ['status' => 1 , 'message' => '评论成功'];
+            }else{
+                return ['status' => 0 , 'message' => '评论失败'];
+            }
         }
     }
 }

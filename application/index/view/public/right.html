@@ -1,10 +1,8 @@
 <div class="page-header">
-    <h1>热门内容</h1>
+    <h1>热门文章</h1>
 </div>
-<ul class="list-group">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-</ul>
+<div class="list-group">
+  {volist name="hots" id="hot" key="k"}
+  <a href="#" class="list-group-item {eq name='$k' value='1'}active{/eq}"><span class="badge">{$hot.pv}</span>{$hot.title|mb_substr=0,35}</a>
+  {/volist}
+</div>

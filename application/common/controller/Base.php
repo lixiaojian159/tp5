@@ -7,12 +7,19 @@ use think\Controller;
 use think\facade\Session;
 
 use app\common\model\ArticleCategory;
+use app\admin\common\model\Web;
+use app\common\model\Article;
 
 class Base extends Controller{
 
 	// 初始化
     protected function initialize(){
+        //判断网站状态
+        $this->isOpen();
+        //获取网站导航
     	$this->showNav();
+        //获取热门文章
+        $this->getArtHot();
     }
 
     //防止用户重复登录
@@ -35,5 +42,28 @@ class Base extends Controller{
             $query->where('status',1)->order('sort','asc');
         });
         $this->view->assign('cateList',$cateList);
+    }
+
+    //判断网站状态 开启 关闭
+    public function isOpen(){
+        $web = Web::where('id',1)->find();
+        if($web['is_open'] == 0){
+            $this->redirect('/index/Close/index');
+            exit;
+        }
+    }
+
+    //判断注册状态 开启  关闭
+    public function isReg(){
+        $web = Web::where('id',1)->find();
+        if($web['is_reg'] == 0){
+            $this->error('注册功能关闭');
+        }
+    }
+
+    //获取热门文章
+    public function getArtHot(){
+        $hots = Article::where('status',1)->order('pv','desc')->limit(7)->select();
+        $this->assign('hots',$hots);
     }
 }

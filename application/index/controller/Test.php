@@ -8,6 +8,7 @@ use app\common\model\User as UserModel;
 
 use app\common\facade\User;
 
+
 class Test extends Base{
 
 	public function index(){
@@ -53,5 +54,13 @@ class Test extends Base{
 
 	public function test6(){
 		getCateName(4);
+	}
+
+	public function test7(){
+		return $this->isOpen();
+	}
+
+	public function test8(){
+		$this->getArtHot();
 	}
 }

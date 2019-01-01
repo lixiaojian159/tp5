@@ -21,6 +21,35 @@
 	<p>{$article.content|raw}</p>
 </div>
 
+<div class="col-md-12">
+	<div class="row">
+		<div class="col-md-12">
+			<form id="com">
+			  <input type="hidden" name="article_id" value="{$article.id}">
+			  <input type="hidden" name="user_id" value="{$Think.session.user_id}">
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">评论区</label>
+			    <textarea class="form-control" rows="5" name="content"></textarea>
+			  </div>
+			  <a href="javascript:;" class="btn btn-default" id="comment">评论</a>
+			</form>
+        </div>
+    </div>
+	<p id="doRes" style="color: green"></p>
+	{volist name="comments" id="comment"}
+	<div class="row" style="margin-bottom: 20px">
+		<div class="col-md-3">{$comment.user_id|getUserName}</div>
+		<div class="col-md-9">{$comment.create_time}</div>
+	</div>
+	<div class="row" style="margin-bottom: 20px">
+		<div class="col-md-12">
+			<textarea class="form-control" rows="3">{$comment.content}</textarea>
+		</div>
+	</div>
+	{/volist}
+</div>
+
+
 <script>
 	$("#fav").on('click',function(){
 		var article_id = $(this).attr('data-id');
@@ -52,6 +81,19 @@
 				}
 			}
 		})
+	})
+
+	$("#comment").click(function(){
+		var data = $('#com').serialize();
+		var url  = '{:url("index/Index/insertComment")}';
+		$.post(url,data,function(result){
+			if(result.status == 1){
+				$("#doRes").text(result.message);
+				window.location.href = '{:url("index/Index/detail")}'+ '?id=' + '{$article.id}';
+			}else{
+				$("#doRes").text(result.message);
+			}
+		},'JSON');
 	})
 </script>
 {/block}

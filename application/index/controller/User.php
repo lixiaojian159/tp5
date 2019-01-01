@@ -18,13 +18,15 @@ class User extends Base{
 
     //会员注册
 	public function register(){
+		//判断注册状态
+		$this->isReg();
 		$this->assign('title','会员注册');
 		return $this->fetch();
 	}
 
 	//会员注册逻辑
 	public function insert(){
-        
+		
         //检测是否是ajax请求
 		if(!Request::isAjax()){
 			$this->error('请求方式不对',url("index/User/register"));

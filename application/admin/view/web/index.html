@@ -1,0 +1,57 @@
+{extend name="public:base" /}
+
+{block name="main"}
+<h2 class="text-center">网站设置</h2>
+<form class="form-horizontal" action="{:url('admin/Web/update')}" method="post">
+  <input type="hidden" name="id" value="1"> 
+  <div class="form-group">
+    <label for="inputEmail1" class="col-sm-2 control-label">网站名称</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputEmail1" name="name" value="{$web.name}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword2" class="col-sm-2 control-label">关键词</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputPassword2" name="keywords" value="{$web.keywords}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword2" class="col-sm-2 control-label">描述</label>
+    <div class="col-sm-10">
+      <textarea class="form-control" rows="3" name="descs">{$web.descs}</textarea>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputPassword2" class="col-sm-2 control-label">网站是否开启</label>
+    <div class="col-sm-10">
+        <label class="radio-inline">
+		  <input type="radio" name="is_open" id="inlineRadio1" value="1" {eq name="$web.is_open" value="1"}checked="checked"{/eq}> 开启
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="is_open" id="inlineRadio2" value="0" {eq name="$web.is_open" value="0"}checked="checked"{/eq}> 关闭
+		</label>
+    </div>
+  </div>
+  {eq name="$web.is_open" value="1"}
+  <div class="form-group">
+    <label for="inputPassword2" class="col-sm-2 control-label">注册是否开启</label>
+    <div class="col-sm-10">
+        <label class="radio-inline">
+		  <input type="radio" name="is_reg" id="inlineRadio1" value="1" {eq name="$web.is_reg" value="1"}checked="checked"{/eq}> 开启
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="is_reg" id="inlineRadio2" value="0" {eq name="$web.is_reg" value="0"}checked="checked"{/eq}> 关闭
+		</label>
+    </div>
+  </div>
+  {/eq}
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-info">保存</button>
+    </div>
+  </div>
+</form>
+{/block}
