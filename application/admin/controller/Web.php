@@ -36,4 +36,8 @@ class Web extends Base{
 			$this->error('修改失败');
 		}
 	}
+
+	public function speed(){
+		return $this->view->fetch();
+	}
 }

@@ -42,7 +42,7 @@
         </div>
     </div>
     <div class="panel panel-primary leftMenu">
-        <div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse" data-target="#collapseListGroup3" role="tab" >
+        <div class="panel-heading" id="collapseListGroupHeading3" data-toggle="collapse" data-target="#collapseListGroup3" role="tab" >
             <h4 class="panel-title">
               <small class="glyphicon glyphicon-book"></small>
                 文件管理
@@ -66,4 +66,27 @@
             </ul>
         </div>
     </div>
+
+    <div class="panel panel-primary leftMenu">
+        <!-- 利用data-target指定要折叠的分组列表 -->
+        <div class="panel-heading" id="collapseListGroupHeading4" data-toggle="collapse" data-target="#collapseListGroup4" role="tab" >
+            <h4 class="panel-title">
+                <small class="glyphicon glyphicon-cog"></small>
+                辅助工具
+                <span class="glyphicon glyphicon-chevron-up right"></span>
+            </h4>
+        </div>
+        <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
+        <div id="collapseListGroup4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading4">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <!-- 利用data-target指定URL -->
+                <button class="menu-item-left" data-target="test2.html">
+                    <span class="glyphicon glyphicon-triangle-right"></span><a href="{:url('admin/Web/speed')}">测网速</a>
+                </button>
+              </li>
+            </ul>
+        </div>
+    </div>
+
 </div>
